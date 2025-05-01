@@ -1,4 +1,5 @@
-﻿document.addEventListener("DOMContentLoaded", function () {
+﻿
+document.addEventListener("DOMContentLoaded", function () {
     const flavorOptions = {
         "Արևածաղիկ": ["Սովորական", "Աղի"],
         "Չիպս": ["Դասական", "Թթվասերի", "Պանրի", "Խորովածի", "Բեկոնի", "Լոլիկի"],
@@ -112,8 +113,75 @@
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    const categories = document.querySelectorAll(".category");
+    // Ապրանքների խմբերի վրա կլիկ անելուց բացվում է համապատասխան փոփափը
+   document.getElementById('product-semchka').addEventListener('click', function() {
+    document.getElementById('product-semchka__popup').style.display = 'block';
+});
 
+
+document.getElementById('product-icecream').addEventListener('click', function() {
+    document.getElementById('product-icecream__popup').style.display = 'block';
+});
+
+
+document.getElementById('product-chips').addEventListener('click', function() {
+    document.getElementById('product-chips__popup').style.display = 'block';
+});
+
+
+document.getElementById('product-pahaco').addEventListener('click', function() {
+    document.getElementById('product-pahaco__popup').style.display = 'block';
+});
+
+
+
+// Փոփափը փակելու գործառույթը «Արևածաղիկ» փոփափի փակման կոճակի միջոցով
+document.getElementById('close-btn-semchka').addEventListener('click', function() {
+    document.getElementById('product-semchka__popup').style.display = 'none';
+});
+
+// Փոփափը փակելու գործառույթը «Պաղպաղակ» փոփափի փակման կոճակի միջոցով
+document.getElementById('close-btn-icecream').addEventListener('click', function() {
+    document.getElementById('product-icecream__popup').style.display = 'none';
+});
+
+document.getElementById('close-btn-chips').addEventListener('click', function() {
+    document.getElementById('product-chips__popup').style.display = 'none';
+});
+
+document.getElementById('close-btn-pahaco').addEventListener('click', function() {
+    document.getElementById('product-pahaco__popup').style.display = 'none';
+});
+
+
+
+
+// Փոփափը փակելու գործառույթը՝ փոփափի պարունակության դուրս կլիկ անելու միջոցով «Արևածաղիկ»
+document.getElementById('product-semchka__popup').addEventListener('click', function(event) {
+    if (event.target === document.getElementById('product-semchka__popup')) {
+        document.getElementById('product-semchka__popup').style.display = 'none';
+    }
+});
+
+// Փոփափը փակելու գործառույթը՝ փոփափի պարունակության դուրս կլիկ անելու միջոցով «Պաղպաղակ»
+document.getElementById('product-icecream__popup').addEventListener('click', function(event) {
+    if (event.target === document.getElementById('product-icecream__popup')) {
+        document.getElementById('product-icecream__popup').style.display = 'none';
+    }
+});
+document.getElementById('product-chips__popup').addEventListener('click', function(event) {
+    if (event.target === document.getElementById('product-chips__popup')) {
+        document.getElementById('product-chips__popup').style.display = 'none';
+    }
+});
+document.getElementById('product-pahaco__popup').addEventListener('click', function(event) {
+    if (event.target === document.getElementById('product-pahaco__popup')) {
+        document.getElementById('product-pahaco__popup').style.display = 'none';
+    }
+});
+
+    // Ապրանքների կատեգորիաների տեսքը պատրաստելու ֆունկցիա
+    const categories = document.querySelectorAll(".category");
     function revealCategories() {
         categories.forEach(category => {
             const rect = category.getBoundingClientRect();
