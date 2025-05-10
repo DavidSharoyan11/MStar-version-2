@@ -1,4 +1,5 @@
 ﻿
+
 document.addEventListener("DOMContentLoaded", function () {
     const flavorOptions = {
         "Արևածաղիկ": ["Սովորական", "Աղի"],
@@ -194,3 +195,96 @@ document.getElementById('product-pahaco__popup').addEventListener('click', funct
     window.addEventListener("scroll", revealCategories);
     revealCategories();
 });
+// Ստանում ենք մոդալը
+let modal = document.getElementById("paymentModal");
+
+// Պատվիրել կոճակի վրա սեղմելու համար
+document.getElementById('orderBtn').addEventListener('click', function() {
+    const cartItems = document.getElementById('cart-items').children;
+    const totalPrice = document.getElementById('total-price').innerText;
+
+    if (cartItems.length === 0) {
+        alert('Ձեր զամբյուղը դատարկ է!');
+    } else {
+        modal.style.display = "block"; // Բացում ենք մոդալը
+    }
+});
+
+// Մոդալը փակելու կոճակը
+document.getElementById('closeModal').addEventListener('click', function() {
+    modal.style.display = "none"; // Փակում ենք մոդալը
+});
+
+// Մոդալը փակելու համար նաև պատուհանի վրա սեղմելով
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none"; // Փակում ենք մոդալը
+    }
+};
+
+// Վճարումը հաստատելու կոճակը
+document.getElementById('submitPayment').addEventListener('click', function () {
+    const cardNumberInput = document.getElementById('cardNumber');
+    const cardNameInput = document.getElementById('cardName');
+    const expiryDateInput = document.getElementById('expiryDate');
+    const cvvInput = document.getElementById('cvv');
+
+    const cardNumber = cardNumberInput.value.trim();
+    const cardName = cardNameInput.value.trim();
+    const expiryDate = expiryDateInput.value.trim();
+    const cvv = cvvInput.value.trim();
+
+    const cardNumberRegex = /^\d{16}$/;
+    const expiryDateRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
+    const cvvRegex = /^\d{3}$/;
+    const nameRegex = /^[Ա-ՖԱ-ֆA-Za-z\s]{3,}$/;
+
+    let valid = true;
+
+    // Clear previous errors
+    document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
+
+    if (!cardNumberRegex.test(cardNumber.replace(/\s+/g, ''))) {
+        showError('cardNumberError', 'Քարտի համարը պետք է լինի 16 թվանշան:');
+        valid = false;
+    }
+
+    if (!nameRegex.test(cardName)) {
+        showError('cardNameError', 'Մուտքագրեք ճիշտ անուն և ազգանուն:');
+        valid = false;
+    }
+
+    if (!expiryDateRegex.test(expiryDate)) {
+        showError('expiryDateError', 'Մուտքագրեք ժամկետ՝ MM/YY ձևաչափով:');
+        valid = false;
+    }
+
+    if (!cvvRegex.test(cvv)) {
+        showError('cvvError', 'CVV-ը պետք է լինի正3 թվանշան:');
+        valid = false;
+    }
+
+    if (!valid) return;
+
+    // Եթե ամեն բան ճիշտ է
+    alert('Վճարումը հաջողությամբ կատարվեց');
+    modal.style.display = "none";
+
+    // Մաքրում ենք զամբյուղը
+    document.getElementById('cart-items').innerHTML = '';
+    document.getElementById('total-price').innerText = '0';
+
+    // Մաքրում ենք մուտքագրված տվյալները
+    cardNumberInput.value = '';
+    cardNameInput.value = '';
+    expiryDateInput.value = '';
+    cvvInput.value = '';
+});
+
+// Ֆունկցիա՝ սխալի հաղորդագրություն ցույց տալու համար
+function showError(elementId, message) {
+    const errorElement = document.getElementById(elementId);
+    if (errorElement) {
+        errorElement.textContent = message;
+    }
+}

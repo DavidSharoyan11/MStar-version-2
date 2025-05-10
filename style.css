@@ -527,6 +527,7 @@ button:hover {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     position: relative;
     text-align: center;
+    margin: 0 auto;
 }
 
 /* Փակման կոճակը */
@@ -754,4 +755,198 @@ button:hover {
 }
 #product__full-size-one{
     width: 100%;
+}
+ /* Մոդալի կոճակը */
+.modal {
+    display: none; /* Առաջին անգամ մոդալը թաքնված է */
+    position: fixed;
+    z-index: 1; /* Դրան կավելանա մնացած պատուհանների վրա */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0); /* Բաժակը */
+    background-color: rgba(0,0,0,0.4); /* Կիսաթափանցիկ */
+}
+
+/* Մոդալի պարունակություն */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* Մոդալի փակելու կոճակը */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* Մոդալի ցանց */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5); /* Թափանցիկ շերտ */
+}
+
+/* Մոդալի պարունակություն */
+.modal-content {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 30px;
+    width: 40%;
+    margin: 10% auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Լուսային տրվածություն */
+    text-align: center;
+}
+
+/* Մոդալի վերնագիր */
+.modal-content h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+/* Վճարման մուտքագրում */
+.modal-content p {
+    font-size: 16px;
+    margin-bottom: 30px;
+    font-family: 'Arial', sans-serif;
+    color: #666;
+}
+
+/* Վճարելու կոճակ */
+#submitPayment {
+    background-color: #4CAF50; /* Գույնը */
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Վճարելու կոճակի Hover էֆեկտ */
+#submitPayment:hover {
+    background-color: #45a049;
+}
+
+/* Փակելու կոճակ */
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    cursor: pointer;
+}
+
+/* Փակելու կոճակի Hover էֆեկտ */
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.payment-form {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-icon {
+    display: flex;
+    align-items: center;
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+.input-icon img {
+    width: 24px;
+    margin-right: 10px;
+}
+
+.input-icon input {
+    border: none;
+    outline: none;
+    background: none;
+    width: 100%;
+    font-size: 16px;
+}
+
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+
+.form-group.half {
+    flex: 1;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+#submitPayment {
+    width: 100%;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#submitPayment:hover {
+    background-color: #45a049;
+}
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 4px;
+}
+.form-group {
+    margin-bottom: 16px;
+}
+#orderBtn{
+    margin-top: 10px;
 }
